@@ -12,5 +12,15 @@ public class TestScript : MonoBehaviour
         {
             Debug.Log("Entered PLayer");
         }
+
+        if (true)
+        {
+            //TEST
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //TEST
     }
 }
