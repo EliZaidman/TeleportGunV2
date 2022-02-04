@@ -19,6 +19,7 @@ public class GunManager : MonoBehaviour
     public bool redBulletActive = true;
     public bool greenBulletActive = false;
     public bool blackBulletActive = false;
+    public bool renderLine;
 
     public Image redFIll;
     public Image greenFIll;
@@ -39,7 +40,7 @@ public class GunManager : MonoBehaviour
 
     }
 
-    
+
 
     public int i;
     void Update()
@@ -84,22 +85,41 @@ public class GunManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Q))
         {
-            lineRenderer.enabled = true;
+            renderLine = true;
             launchVelocity -= 0.08f;
             powerSlider.value -= 0.0008f;
+
         }
-        else if (Input.GetKey(KeyCode.E))
+
+        if (Input.GetKeyUp(KeyCode.Q))
         {
-            lineRenderer.enabled = true;
+            renderLine = false;
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            renderLine = true;
             launchVelocity += 0.08f;
             powerSlider.value += 0.0008f;
+        }
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            renderLine = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ChooseToRender();
+        }
+
+
+        if (renderLine)
+        {
+            lineRenderer.enabled = true;
         }
         else
         {
             lineRenderer.enabled = false;
         }
-
-
 
 
 
@@ -164,7 +184,7 @@ public class GunManager : MonoBehaviour
 
     }
 
-    
+
 
     private void BulletTypeSelector()
     {
@@ -220,8 +240,18 @@ public class GunManager : MonoBehaviour
             lineRenderer.endColor = Color.blue;
 
         }
-        
+
+    }
+    private void ChooseToRender()
+    {
+        if (renderLine)
+        {
+            renderLine = false;
+        }
+        else
+        {
+            renderLine = true;
+        }
     }
 
-   
 }
