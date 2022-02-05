@@ -66,9 +66,9 @@ Material:
     - _Dezintegration: 1
     - _DirectionsMultiplier: 4.5
     - _Disturbances: 1
-    - _DisturbancesIntensity: 8
+    - _DisturbancesIntensity: 1
     - _DstBlend: 0
-    - _Fragmentation: 0.99936914
+    - _Fragmentation: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1

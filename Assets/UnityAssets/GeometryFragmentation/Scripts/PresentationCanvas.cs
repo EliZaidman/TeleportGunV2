@@ -17,7 +17,6 @@ public class PresentationCanvas : MonoBehaviour
     private const string DisturbancesIntensity = "_DisturbancesIntensity";
 
     public Material material1;
-    public Material material2;
 
     public Text descText;
 
@@ -34,9 +33,15 @@ public class PresentationCanvas : MonoBehaviour
 
     public List<Sprite> sprites = new List<Sprite>();
 
-    public GameObject object1;
-    public GameObject object2;
+     
 
+    private void Start()
+    {
+
+        material1 = gameObject.GetComponents<Material>()[0];
+
+
+    }
     private void UpdateSettingTexts()
     {
         float dez = material1.GetFloat(DezintegrationId);
@@ -64,7 +69,7 @@ public class PresentationCanvas : MonoBehaviour
     private void SetProperty(string id, float value)
     {
         material1.SetFloat(id, value);
-        material2.SetFloat(id, value);
+
 
         UpdateSettingTexts();
     }
@@ -74,7 +79,7 @@ public class PresentationCanvas : MonoBehaviour
         image.sprite = sprites[id];
 
         material1.SetTexture(DirectionsMapId, sprites[id].texture);
-        material2.SetTexture(DirectionsMapId, sprites[id].texture);
+
     }
 
     private void Awake()
@@ -112,11 +117,11 @@ public class PresentationCanvas : MonoBehaviour
         ChangeSettings("Dezintegration of models - randomness", true, false, true, 4.5f);
         //yield return new WaitForSeconds(1.0f);
 
-       
+
         for (int i = 0; i < sprites.Count; i++)
         {
             ChangeSprite(i);
-            //yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.5f);
             yield return ChangeFragmentation(1.0f, 0.0f, 4.0f);
         }
 
@@ -124,7 +129,7 @@ public class PresentationCanvas : MonoBehaviour
         for (int i = 0; i < sprites.Count; i++)
         {
             ChangeSprite(i);
-            //yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.5f);
             yield return ChangeFragmentation(1.0f, 0.0f, 4.0f);
         }
 
@@ -133,83 +138,28 @@ public class PresentationCanvas : MonoBehaviour
         ChangeSprite(0);
         SetProperty(DisturbancesId, 0.0f);
 
-        SetProperty(MultiplierId, 2.4f);
-        yield return ChangeFragmentation(1.0f, 0.0f, 8.0f);
-        SetProperty(DisturbancesId, 1.0f);
-        yield return ChangeFragmentation(1.0f, 0.0f, 8.0f);
-        SetProperty(DisturbancesId, 0.0f);
+        //SetProperty(MultiplierId, 2.4f);
+        //yield return ChangeFragmentation(1.0f, 0.0f, 8.0f);
+        //SetProperty(DisturbancesId, 1.0f);
+        //yield return ChangeFragmentation(1.0f, 0.0f, 8.0f);
+        //SetProperty(DisturbancesId, 0.0f);
 
 
-        SetProperty(MultiplierId, 0.5f);
-        yield return ChangeFragmentation(1.0f, 0.0f, 4.0f);
-        SetProperty(DisturbancesId, 1.0f);
-        yield return ChangeFragmentation(1.0f, 0.0f, 4.0f);
-        SetProperty(DisturbancesId, 0.0f);
+        //SetProperty(MultiplierId, 0.5f);
+        //yield return ChangeFragmentation(1.0f, 0.0f, 4.0f);
+        //SetProperty(DisturbancesId, 1.0f);
+        //yield return ChangeFragmentation(1.0f, 0.0f, 4.0f);
+        //SetProperty(DisturbancesId, 0.0f);
 
 
         ChangeSettings("Changing fragments position - dynamic", false, false, true, 3.0f, 8.0f);
-        object2.SetActive(false);
-
-        Vector3 startingPos = object1.transform.position;
-
-        ChangeSprite(0);
-        StartCoroutine(ChangeFragmentation(1.0f, 0.0f, 4.0f));
-        yield return ChangePosition(object1, object2.transform.position, 4.0f);
-
-
-        ChangeSprite(1);
-        StartCoroutine(ChangeFragmentation(1.0f, 0.0f, 4.0f));
-        yield return ChangePosition(object1, startingPos, 4.0f);
-
-
-        ChangeSettings("Changing fragments position - static", false, false, false, 5.5f, 1.0f);
-        ChangeSprite(0);
-        StartCoroutine(ChangeFragmentation(1.0f, 0.0f, 6.0f));
-        yield return ChangePosition(object1, object2.transform.position, 6.0f);
-
-
-        ChangeSprite(1);
-        StartCoroutine(ChangeFragmentation(1.0f, 0.0f, 6.0f));
-        yield return ChangePosition(object1, startingPos, 6.0f);
-
-
-        ChangeSprite(0);
-
-        ChangeSettings("Teleport models - dynamic", true, false, true, 5.5f, 1.0f);
-        yield return Teleport(object1, object2.transform.position, 6.0f);
-
-        ChangeSettings("Teleport models - static", true, false, false, 5.5f, 1.0f);
-        yield return Teleport(object1, startingPos, 6.0f);
-
-
-        ChangeSettings("Teleport models (overtension ON) - dynamic", true, true, true, 2.0f, 1.0f);
-        yield return Teleport(object1, object2.transform.position, 6.0f);
-
-        ChangeSettings("Teleport models (overtension ON) - static", true, true, false, 5.5f, 1.0f);
-        yield return Teleport(object1, startingPos, 6.0f);
-
-
-        yield return new WaitForSeconds(0.5f);
-
-
-        ChangeSettings("Cloud of fragments", false, false, true, 4.0f, 0.1f);
-        object2.SetActive(true);
-        SetProperty(FragmentationId, 0.3f);
-        for (int i = 0; i < 2;i++)
-        {
-            ChangeSprite(i);
-            yield return new WaitForSeconds(4.0f);
-        }
-
-        ChangeSettings("Various animations", false, false, true, 4.0f, 1.4f);
-        ChangeSprite(4);
+        
         yield return new WaitForSeconds(5.0f);
 
         yield return null;
 
 
-        object1.SetActive(false);
-        object2.SetActive(false);
+        gameObject.SetActive(false);
     }
 
 
@@ -248,9 +198,14 @@ public class PresentationCanvas : MonoBehaviour
 
     protected IEnumerator ChangeFragmentation(float value1, float value2, float time)
     {
+        base.gameObject.GetComponent<Collider>().enabled = false;
+        base.gameObject.GetComponentInChildren<BoxCollider>().enabled = false;
         yield return ChangeFragmentation(value1, time / 2.0f);
-        Destroy(gameObject);
         yield return ChangeFragmentation(value2, time / 2.0f);
+
+        yield return new WaitForSeconds(0.05f);
+        base.gameObject.GetComponent<Collider>().enabled = true;
+        base.gameObject.GetComponentInChildren<BoxCollider>().enabled = true;
     }
 
 
@@ -282,7 +237,17 @@ public class PresentationCanvas : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (collision.gameObject.tag == "Red" && base.gameObject.tag == "Red")
+        {
+            StartCoroutine(Presentation());
+        }
+
+        if (collision.gameObject.tag == "Green" && base.gameObject.tag == "Green")
+        {
+            StartCoroutine(Presentation());
+        }
+
+        if (collision.gameObject.tag == "Blue" && base.gameObject.tag == "Blue")
         {
             StartCoroutine(Presentation());
         }
