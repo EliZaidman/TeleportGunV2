@@ -32,6 +32,7 @@ public class BouncePad : MonoBehaviour
         {
             Debug.Log("inside");
             player.GetComponent<MovementScript>().Push(jumpForce);
+            player.GetComponent<MovementScript>().glideSlider.value = 1;
         }
     }
 }

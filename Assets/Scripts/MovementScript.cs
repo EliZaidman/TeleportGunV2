@@ -97,7 +97,7 @@ public class MovementScript : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyUp(KeyCode.F))
+        if (/*Input.GetKeyUp(KeyCode.F) && */characterController.isGrounded)
         {
             glideSlider.value = 1;
             glideSlider.gameObject.SetActive(false);
