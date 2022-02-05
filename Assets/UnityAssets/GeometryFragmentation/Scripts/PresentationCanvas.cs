@@ -118,12 +118,12 @@ public class PresentationCanvas : MonoBehaviour
         //yield return new WaitForSeconds(1.0f);
 
 
-        for (int i = 0; i < sprites.Count; i++)
-        {
-            ChangeSprite(i);
-            yield return new WaitForSeconds(0.5f);
-            yield return ChangeFragmentation(1.0f, 0.0f, 4.0f);
-        }
+        //for (int i = 0; i < sprites.Count; i++)
+        //{
+        //    ChangeSprite(i);
+        //    yield return new WaitForSeconds(0.5f);
+        //    yield return ChangeFragmentation(1.0f, 0.0f, 4.0f);
+        //}
 
         ChangeSettings("Dezintegration of models - static", true, false, false, 7.5f);
         for (int i = 0; i < sprites.Count; i++)
@@ -159,7 +159,7 @@ public class PresentationCanvas : MonoBehaviour
         yield return null;
 
 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
 
@@ -237,17 +237,17 @@ public class PresentationCanvas : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Red" && base.gameObject.tag == "Red")
+        if (collision.gameObject.tag == "Red" && gameObject.tag == "Red")
         {
             StartCoroutine(Presentation());
         }
 
-        if (collision.gameObject.tag == "Green" && base.gameObject.tag == "Green")
+        if (collision.gameObject.tag == "Green" && gameObject.tag == "Green")
         {
             StartCoroutine(Presentation());
         }
 
-        if (collision.gameObject.tag == "Blue" && base.gameObject.tag == "Blue")
+        if (collision.gameObject.tag == "Blue" && gameObject.tag == "Blue")
         {
             StartCoroutine(Presentation());
         }
