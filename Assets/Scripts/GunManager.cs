@@ -174,7 +174,7 @@ public class GunManager : MonoBehaviour
 
         //player.transform.position = currnetBall.transform.position;
         Debug.Log(currnetBall.transform.position.ToString());
-        Debug.Log(player.transform.position.ToString());
+        Debug.Log(player.transform.position.ToString());    
         Destroy(currnetBall);
 
 

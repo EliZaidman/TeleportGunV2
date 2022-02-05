@@ -38,7 +38,7 @@ public class PresentationCanvas : MonoBehaviour
     private void Start()
     {
 
-        material1 = gameObject.GetComponents<Material>()[0];
+        //material1 = gameObject.GetComponents<Material>()[0];
 
 
     }
