@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class GunManager : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class GunManager : MonoBehaviour
 
     }
 
-
+    
 
     public int i;
     void Update()
@@ -77,8 +78,7 @@ public class GunManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                Destroy(currnetBall);
-                shootAnim.Play("Reload");
+                StartCoroutine(Reload());
             }
         }
 
@@ -149,7 +149,7 @@ public class GunManager : MonoBehaviour
             Camera.main.fieldOfView = 105;
             //GetComponentInChildren<GunMove>().lookXLimit = lookXLimitDefult;
             GetComponentInChildren<LineRenderer>().enabled = false;
-            Debug.Log("Stopped Zooming");
+            
         }
 
 
@@ -251,4 +251,14 @@ public class GunManager : MonoBehaviour
         }
     }
 
+    IEnumerator Reload()
+    {
+        Destroy(currnetBall);
+        shootAnim.Play("Reload");
+        Debug.Log("Before");
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("After");
+        shootAnim.Stop("Reload");
+    }
+     
 }
