@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class MovementScript : MonoBehaviour
 {
+    GunManager gunManager;
+
+
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
     public float jumpSpeed = 8.0f;
@@ -31,8 +34,12 @@ public class MovementScript : MonoBehaviour
     public bool canMove = true;
     public float speed = 3.0F;
     public float rotateSpeed = 100.0F;
+
+    
     void Start()
     {
+        gunManager = GetComponentInChildren<GunManager>();
+
         glideSlider.value = 1;
         characterController = GetComponent<CharacterController>();
 
@@ -64,6 +71,9 @@ public class MovementScript : MonoBehaviour
             moveDirection.y = movementDirectionY;
 
         }
+
+
+       
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
