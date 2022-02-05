@@ -143,6 +143,7 @@ public class MovementScript : MonoBehaviour
                 footStepDelay = 0.3f;
                 if (nextFootstep <= 0)
                 {
+                    gunManager.shootAnim.Play("Running");
                     GetComponent<AudioSource>().PlayOneShot(footStepSound, 0.7f);
                     nextFootstep += footStepDelay;
                 }
@@ -152,6 +153,7 @@ public class MovementScript : MonoBehaviour
                 footStepDelay = 0.5f;
                 if (nextFootstep <= 0)
                 {
+                    //gunManager.shootAnim.Play("Walking");
                     GetComponent<AudioSource>().PlayOneShot(footStepSound, 0.7f);
                     nextFootstep += footStepDelay;
                 }

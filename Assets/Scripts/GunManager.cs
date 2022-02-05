@@ -109,7 +109,7 @@ public class GunManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             ChooseToRender();
-            shootAnim.Play("Running");
+            
         }
 
 
