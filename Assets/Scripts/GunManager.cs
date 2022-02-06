@@ -10,7 +10,7 @@ public class GunManager : MonoBehaviour
     [SerializeField] private CharacterController cc;
 
     MovementScript playerMovment;
-
+    public float speed = 100f;
     public GameObject[] projectile;
     public float launchVelocity;
     public GameObject currnetBall;
@@ -56,7 +56,7 @@ public class GunManager : MonoBehaviour
         //launchVelocity = Mathf.Clamp(launchVelocity, 1, 100);
 
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
         {
             if (currnetBall == null)
             {
@@ -69,13 +69,28 @@ public class GunManager : MonoBehaviour
 
             else
             {
-                TP();
+                cc.enabled = true;
+                Destroy(currnetBall);
             }
             return;
         }
 
+
+
         if (currnetBall)
         {
+            if (Input.GetMouseButton(0))
+            TP();
+
+            if (Input.GetMouseButtonUp(1))
+            {
+                Destroy(currnetBall);
+                cc.enabled = false;
+                player.transform.position = currnetBallPos;
+                cc.enabled = true;
+
+            }
+
             if (Input.GetKeyDown(KeyCode.R))
             {
                 StartCoroutine(Reload());
@@ -168,14 +183,15 @@ public class GunManager : MonoBehaviour
             return;
         }
 
-        cc.enabled = false;
-        player.transform.position = currnetBallPos;
-        cc.enabled = true;
+        cc.enabled = false;     
+        //player.transform.position = currnetBallPos;
+        
 
-        //player.transform.position = currnetBall.transform.position;
+        
+        player.transform.position = Vector3.Lerp(player.transform.position, currnetBallPos, Time.deltaTime * 0.2f);
         Debug.Log(currnetBall.transform.position.ToString());
         Debug.Log(player.transform.position.ToString());    
-        Destroy(currnetBall);
+        //  Destroy(currnetBall);
 
 
 
