@@ -10,6 +10,7 @@ TagManager:
   - VelocityWall
   - Blue
   - metal
+  - Glass
   layers:
   - Default
   - TransparentFX

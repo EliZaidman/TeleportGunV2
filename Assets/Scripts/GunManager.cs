@@ -266,13 +266,13 @@ public class GunManager : MonoBehaviour
     }
     private void ChooseToRender()
     {
-        if (renderLine)
+        if (!renderLine)
         {
-            renderLine = false;
+            renderLine = true;
         }
         else
         {
-            renderLine = true;
+            renderLine = false;
         }
     }
 

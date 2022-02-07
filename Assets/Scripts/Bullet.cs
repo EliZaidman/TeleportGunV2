@@ -54,6 +54,14 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             //Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Glass") )
+        {
+            Destroy(gameObject);
+            Debug.Log("Glass Is Glass, And Glass Can Brake");
+            //StartCoroutine(DestroyAfter(collision.gameObject));
+        }
+
         if (collision.gameObject.CompareTag("metal"))
         {
             PlayBullet(Clip);
@@ -66,6 +74,15 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
+
+    }
+
+    IEnumerator DestroyAfter(GameObject collistionObject)
+    {
+        Debug.Log("entered Coo");
+        yield return new WaitForSeconds(2);
+        Destroy(collistionObject);
+        Debug.Log("Exited co Coo");
 
     }
 }
