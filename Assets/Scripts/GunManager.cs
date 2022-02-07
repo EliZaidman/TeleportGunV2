@@ -74,13 +74,13 @@ public class GunManager : MonoBehaviour
 
             else
             {
-<<<<<<< HEAD
+
                 TP();
 
-=======
+
                 cc.enabled = true;
                 Destroy(currnetBall);
->>>>>>> main
+
             }
             return;
         }
@@ -200,14 +200,14 @@ public class GunManager : MonoBehaviour
         
         player.transform.position = Vector3.Lerp(player.transform.position, currnetBallPos, Time.deltaTime * 0.2f);
         Debug.Log(currnetBall.transform.position.ToString());
-<<<<<<< HEAD
+
         Debug.Log(player.transform.position.ToString());
         AudioManager.Instance.Play(tpSound);
         Destroy(currnetBall);
-=======
+
         Debug.Log(player.transform.position.ToString());    
         //  Destroy(currnetBall);
->>>>>>> main
+
 
 
 
