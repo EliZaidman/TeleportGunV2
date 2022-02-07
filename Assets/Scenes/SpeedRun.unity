@@ -10013,8 +10013,7 @@ MonoBehaviour:
   gunManager: {fileID: 5068503985096217764}
   gunMove: {fileID: 675890010800010771}
   movement: {fileID: 1119232836}
-  menuanim: {fileID: 1507583164}
-  panelmanager: {fileID: 0}
+  mainMenu: {fileID: 1735100355}
 --- !u!4 &291381321
 Transform:
   m_ObjectHideFlags: 0
@@ -52511,15 +52510,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119232833}
-  m_LocalRotation: {x: -0, y: -0.6698767, z: -0, w: 0.7424724}
-  m_LocalPosition: {x: 44, y: 76, z: 241.2}
+  m_LocalRotation: {x: -0, y: 0.71648586, z: -0, w: 0.6976017}
+  m_LocalPosition: {x: 43.92, y: 80.4, z: 245.2}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 3384476803688069087}
   - {fileID: 3329120261863662055}
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: -84.115, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 91.53, z: 0}
 --- !u!82 &1119232835
 AudioSource:
   m_ObjectHideFlags: 0
@@ -58278,7 +58277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9ad66ebe6989d419ba6cb14f4cd454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1119232833}
+  player: {fileID: 258640531983849586}
+  gun: {fileID: 7899288830788805836}
   canvas: {fileID: 1735100355}
 --- !u!1 &1238947795
 GameObject:
@@ -68241,7 +68241,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 30.9785, y: 0.15699959}
   m_SizeDelta: {x: -14.5673, y: 64.4652}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -68690,6 +68690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1119232833}
+  gun: {fileID: 0}
   canvas: {fileID: 291292517}
 --- !u!114 &1507583166
 MonoBehaviour:
@@ -76317,7 +76318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1735100356
 Transform:
   m_ObjectHideFlags: 0
@@ -92768,15 +92769,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4203725767295450, guid: d1c4b4ade0a1b144983fb153ea5a16a6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 70.69331
+      value: 67.158646
       objectReference: {fileID: 0}
     - target: {fileID: 4203725767295450, guid: d1c4b4ade0a1b144983fb153ea5a16a6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 43.02625
+      value: 40.874935
       objectReference: {fileID: 0}
     - target: {fileID: 4203725767295450, guid: d1c4b4ade0a1b144983fb153ea5a16a6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.21002758
+      value: 0.19952619
       objectReference: {fileID: 0}
     - target: {fileID: 4203725767295450, guid: d1c4b4ade0a1b144983fb153ea5a16a6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -92788,7 +92789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4203725767295450, guid: d1c4b4ade0a1b144983fb153ea5a16a6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 301.27264
+      value: 299.6
       objectReference: {fileID: 0}
     - target: {fileID: 4203725767295450, guid: d1c4b4ade0a1b144983fb153ea5a16a6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -95462,7 +95463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &258640531983849587
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -115015,7 +115016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &7901231285779446420
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -9,19 +9,22 @@ public class PauseMenu : MonoBehaviour
     public GunManager gunManager;
     public GunMove gunMove;
     public MovementScript movement;
-    public Animator menuanim;
-    public PanelManager panelmanager;
+    public GameObject mainMenu;
+    
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Menu.SetActive(true);
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-            StartCoroutine(StopGame());
 
-        }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Menu.SetActive(true);
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+                StartCoroutine(StopGame());
+
+            }
+        
+
     }
     
     IEnumerator StopGame()
