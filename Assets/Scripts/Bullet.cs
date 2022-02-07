@@ -6,7 +6,9 @@ public class Bullet : MonoBehaviour
 {
      GameObject bullet;
      GunManager gunManager;
-
+   public AudioSource audiosource;
+   public AudioClip Clip;
+   
     private void Start()
     {
         gunManager = FindObjectOfType<GunManager>();
@@ -27,7 +29,7 @@ public class Bullet : MonoBehaviour
 
     //    }
     //}
-
+   
     private void OnCollisionEnter(Collision collision)
     {
 
@@ -52,9 +54,16 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             //Destroy(collision.gameObject);
         }
-
+        if (collision.gameObject.CompareTag("metal"))
+        {
+            PlayBullet(Clip);
+        }
     }
-
+    public void PlayBullet(AudioClip clip)
+    {
+        audiosource.clip = clip;
+        audiosource.Play();
+    }
     private void OnTriggerEnter(Collider collision)
     {
 

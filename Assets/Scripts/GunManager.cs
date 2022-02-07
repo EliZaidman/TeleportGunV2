@@ -27,8 +27,12 @@ public class GunManager : MonoBehaviour
     public Image blackFIll;
 
     public Animation shootAnim;
-
+    
     LineRenderer lineRenderer;
+    public AudioClip shotingSound;
+    public AudioClip tpSound;
+    public AudioClip reloadSound;
+    public AudioClip switchSound;
     private void Awake()
     {
 
@@ -65,11 +69,13 @@ public class GunManager : MonoBehaviour
                                                      (0, 0, powerSlider.value * launchVelocity));
                 //Mathf.Clamp(0, 100, launchVelocity);
                 shootAnim.Play("Shoot");
+                AudioManager.Instance.Play(shotingSound);
             }
 
             else
             {
                 TP();
+
             }
             return;
         }
@@ -174,7 +180,8 @@ public class GunManager : MonoBehaviour
 
         //player.transform.position = currnetBall.transform.position;
         Debug.Log(currnetBall.transform.position.ToString());
-        Debug.Log(player.transform.position.ToString());    
+        Debug.Log(player.transform.position.ToString());
+        AudioManager.Instance.Play(tpSound);
         Destroy(currnetBall);
 
 
@@ -211,6 +218,7 @@ public class GunManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            AudioManager.Instance.Play(switchSound);
             redBulletActive = true;
             greenBulletActive = false;
             blackBulletActive = false;
@@ -220,6 +228,7 @@ public class GunManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            AudioManager.Instance.Play(switchSound);
             redBulletActive = false;
             greenBulletActive = true;
             blackBulletActive = false;
@@ -230,6 +239,7 @@ public class GunManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            AudioManager.Instance.Play(switchSound);
             redBulletActive = false;
             greenBulletActive = false;
             blackBulletActive = true;
@@ -254,6 +264,7 @@ public class GunManager : MonoBehaviour
     IEnumerator Reload()
     {
         Destroy(currnetBall);
+        AudioManager.Instance.Play(reloadSound);
         shootAnim.Play("Reload");
         Debug.Log("Before");
         yield return new WaitForSeconds(1.5f);
