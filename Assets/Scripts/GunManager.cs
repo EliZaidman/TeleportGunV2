@@ -10,7 +10,7 @@ public class GunManager : MonoBehaviour
     [SerializeField] private CharacterController cc;
 
     MovementScript playerMovment;
-    public float speed = 100f;
+    public float pullSpeed = 0.5f;
     public GameObject[] projectile;
     public float launchVelocity;
     public GameObject currnetBall;
@@ -69,8 +69,9 @@ public class GunManager : MonoBehaviour
 
             else
             {
-                cc.enabled = true;
-                Destroy(currnetBall);
+                TP();
+                //cc.enabled = true;
+                //Destroy(currnetBall);
             }
             return;
         }
@@ -79,17 +80,20 @@ public class GunManager : MonoBehaviour
 
         if (currnetBall)
         {
-            if (Input.GetMouseButton(0))
-            TP();
-
-            if (Input.GetMouseButtonUp(1))
+            if (Input.GetMouseButtonUp(0))
             {
-                Destroy(currnetBall);
-                cc.enabled = false;
-                player.transform.position = currnetBallPos;
-                cc.enabled = true;
 
             }
+            
+
+            //if (Input.GetMouseButtonUp(0))
+            //{
+            //    Destroy(currnetBall);
+            //    cc.enabled = false;
+            //    player.transform.position = currnetBallPos;
+            //    cc.enabled = true;
+
+            //}
 
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -144,16 +148,14 @@ public class GunManager : MonoBehaviour
             {
                 playerMovment.lookXLimit = 0;
                 Camera.main.fieldOfView = 50;
-                //GetComponentInChildren<GunMove>().lookXLimit = lookXLimitDefult;
-                GetComponentInChildren<LineRenderer>().enabled = true;
+                lineRenderer.enabled = true;
                 Debug.Log("Zooming");
             }
             if (Input.GetMouseButtonUp(1))
             {
                 playerMovment.lookXLimit = playerMovment.lookXLimitDefult;
                 Camera.main.fieldOfView = 105;
-                //GetComponentInChildren<GunMove>().lookXLimit = lookXLimitDefult;
-                GetComponentInChildren<LineRenderer>().enabled = false;
+                //lineRenderer.enabled = false;
                 Debug.Log("Stopped Zooming");
             }
 
@@ -162,8 +164,7 @@ public class GunManager : MonoBehaviour
         {
             playerMovment.lookXLimit = playerMovment.lookXLimitDefult;
             Camera.main.fieldOfView = 105;
-            //GetComponentInChildren<GunMove>().lookXLimit = lookXLimitDefult;
-            GetComponentInChildren<LineRenderer>().enabled = false;
+            //GetComponentInChildren<LineRenderer>().enabled = false;
             
         }
 
@@ -184,20 +185,23 @@ public class GunManager : MonoBehaviour
         }
 
         cc.enabled = false;     
-        //player.transform.position = currnetBallPos;
-        
+        player.transform.position = currnetBallPos;
+        cc.enabled = true;
 
-        
-        player.transform.position = Vector3.Lerp(player.transform.position, currnetBallPos, Time.deltaTime * 0.2f);
         Debug.Log(currnetBall.transform.position.ToString());
         Debug.Log(player.transform.position.ToString());    
-        //  Destroy(currnetBall);
+        Destroy(currnetBall);
 
 
 
     }
 
-
+    private void Drag()
+    {
+        cc.enabled = false;
+        player.transform.position = Vector3.Lerp(player.transform.position, currnetBallPos, Time.deltaTime * pullSpeed);
+        cc.enabled = true;
+    }
 
     private void BulletTypeSelector()
     {
