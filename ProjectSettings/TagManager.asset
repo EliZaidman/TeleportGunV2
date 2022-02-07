@@ -9,6 +9,7 @@ TagManager:
   - Black
   - VelocityWall
   - Blue
+  - metal
   layers:
   - Default
   - TransparentFX

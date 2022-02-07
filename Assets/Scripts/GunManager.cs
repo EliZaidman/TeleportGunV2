@@ -74,19 +74,13 @@ public class GunManager : MonoBehaviour
 
             else
             {
-<<<<<<< HEAD
                 TP();
                 //cc.enabled = true;
                 //Destroy(currnetBall);
-=======
-
-                TP();
-
 
                 cc.enabled = true;
                 Destroy(currnetBall);
 
->>>>>>> origin/BenHaimZ
             }
             return;
         }
@@ -125,25 +119,16 @@ public class GunManager : MonoBehaviour
 
         }
 
-        if (Input.GetKeyUp(KeyCode.Q))
-        {
-            renderLine = false;
-        }
         if (Input.GetKey(KeyCode.E))
         {
             renderLine = true;
             launchVelocity += 0.08f;
             powerSlider.value += 0.0008f;
         }
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            renderLine = false;
-        }
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            ChooseToRender();
-            
+            ChooseToRender();        
         }
 
 
@@ -170,7 +155,6 @@ public class GunManager : MonoBehaviour
             {
                 playerMovment.lookXLimit = playerMovment.lookXLimitDefult;
                 Camera.main.fieldOfView = 105;
-                //lineRenderer.enabled = false;
                 Debug.Log("Stopped Zooming");
             }
 
@@ -179,7 +163,6 @@ public class GunManager : MonoBehaviour
         {
             playerMovment.lookXLimit = playerMovment.lookXLimitDefult;
             Camera.main.fieldOfView = 105;
-            //GetComponentInChildren<LineRenderer>().enabled = false;
             
         }
 
@@ -208,9 +191,7 @@ public class GunManager : MonoBehaviour
         Debug.Log(player.transform.position.ToString());
         AudioManager.Instance.Play(tpSound);
         Destroy(currnetBall);
-
         Debug.Log(player.transform.position.ToString());    
-        Destroy(currnetBall);
 
 
 

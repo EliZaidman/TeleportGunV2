@@ -20,7 +20,7 @@ public class LoseGravity : MonoBehaviour
         else
         rb.useGravity = false;
         rb.AddForce(0, gravitForce, 0);
-        
+        AudioManager.Instance.Play(flyingobject);
     }
    
 }
