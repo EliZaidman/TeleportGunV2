@@ -9,8 +9,7 @@ public class BouncePad : MonoBehaviour
     //public MovementScript MovementScript;
 
      Vector3 direction;
-    public AudioSource audiosource;
-    public AudioClip Clip;
+
 
 
 
@@ -34,13 +33,6 @@ public class BouncePad : MonoBehaviour
             Debug.Log("inside");
             player.GetComponent<MovementScript>().Push(jumpForce);
             player.GetComponent<MovementScript>().glideSlider.value = 1;
-            PlaySound(Clip);
-
         }
-    }
-    public void PlaySound(AudioClip clip)
-    {
-        audiosource.clip = clip;
-        audiosource.Play();
     }
 }

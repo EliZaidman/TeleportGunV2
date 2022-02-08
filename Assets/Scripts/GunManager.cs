@@ -33,10 +33,9 @@ public class GunManager : MonoBehaviour
     public AudioClip tpSound;
     public AudioClip reloadSound;
     public AudioClip switchSound;
-
-    private void OnEnable()
+    private void Awake()
     {
-        playerMovment.gunManager = this;
+
     }
     void Start()
     {
