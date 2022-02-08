@@ -79,19 +79,22 @@ public class MovementScript : MonoBehaviour
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.F)&& glideSlider)
+        if (!gunManager.isStuck)
         {
-            glideSlider.gameObject.SetActive(true);
-            glideSlider.value -= 0.4F * Time.deltaTime;
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.F) && glideSlider)
             {
-                glideSlider.value -= 0.5F * Time.deltaTime;
-            }
-            if (glideSlider.value == 0)
-            {
-                glideSlider.gameObject.SetActive(false);
-            }
+                glideSlider.gameObject.SetActive(true);
+                glideSlider.value -= 0.4F * Time.deltaTime;
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    glideSlider.value -= 0.5F * Time.deltaTime;
+                }
+                if (glideSlider.value == 0)
+                {
+                    glideSlider.gameObject.SetActive(false);
+                }
 
+            }
         }
         if (/*Input.GetKeyUp(KeyCode.F) && */characterController.isGrounded)
         {
@@ -116,6 +119,7 @@ public class MovementScript : MonoBehaviour
             {
                 moveDirection.y = jumpSpeed / 100;
                 gravity = 1;
+
             }
             
             if (gravity == 1)
