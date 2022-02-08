@@ -35,7 +35,9 @@ public class MovementScript : MonoBehaviour
     public float speed = 3.0F;
     public float rotateSpeed = 100.0F;
 
-    
+    public AudioClip jetSound;
+    public AudioClip jumpSound;
+
     void Start()
     {
         gunManager = GetComponentInChildren<GunManager>();
@@ -61,6 +63,7 @@ public class MovementScript : MonoBehaviour
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;
+            AudioManager.Instance.Play(jumpSound);
         }
         else
         {
@@ -83,6 +86,7 @@ public class MovementScript : MonoBehaviour
         {
             glideSlider.gameObject.SetActive(true);
             glideSlider.value -= 0.4F * Time.deltaTime;
+            AudioManager.Instance.Play(jetSound);
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 glideSlider.value -= 0.5F * Time.deltaTime;

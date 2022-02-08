@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
 	public float HighPitchRange = 1.05f;
 
 	public AudioClip BgMusic;
+	public AudioClip BgMusicOc;
 
 	// Singleton instance.
 	public static AudioManager Instance = null;
@@ -39,6 +40,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
 		PlayMusic(BgMusic);
+		PlayPlayer(BgMusicOc);
     }
 
     // Play a single clip through the sound effects source.
