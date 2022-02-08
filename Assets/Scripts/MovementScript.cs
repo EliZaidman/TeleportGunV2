@@ -9,6 +9,7 @@ public class MovementScript : MonoBehaviour
 {
     public GunManager gunManager;
 
+    public Collider playerCollider;
 
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
@@ -37,11 +38,19 @@ public class MovementScript : MonoBehaviour
 
     public AudioClip jetSound;
     public AudioClip jumpSound;
+    public AudioClip metalFloor;
+
+
+    private bool isJetActive;
+    private bool isWalking;
+
+    public bool jetIsPlaying = false;
 
     void Start()
     {
         gunManager = GetComponentInChildren<GunManager>();
 
+        playerCollider = GameObject.Find("Player").GetComponent<Collider>();
         glideSlider.value = 1;
         characterController = GetComponent<CharacterController>();
 
@@ -50,8 +59,8 @@ public class MovementScript : MonoBehaviour
 
     void Update()
     {
-        // We are grounded, so recalculate move direction based on axes
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
+    // We are grounded, so recalculate move direction based on axes
+    Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
         // Press Left Shift to run
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
@@ -84,9 +93,14 @@ public class MovementScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.F)&& glideSlider)
         {
+            if (!jetIsPlaying)
+            {
+                StartCoroutine(JetSound());
+            }
+            
             glideSlider.gameObject.SetActive(true);
             glideSlider.value -= 0.4F * Time.deltaTime;
-            AudioManager.Instance.PlayPlayer(jetSound);
+            
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 glideSlider.value -= 0.5F * Time.deltaTime;
@@ -103,7 +117,11 @@ public class MovementScript : MonoBehaviour
             glideSlider.gameObject.SetActive(false);
         }
 
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            AudioManager.Instance.PlayPlayer(jetSound);
 
+        }
 
         // Player and Camera rotation
         if (canMove)
@@ -200,6 +218,16 @@ public class MovementScript : MonoBehaviour
         
     }
 
+    IEnumerator JetSound()
+    {
+        jetIsPlaying = true;
+        if (glideSlider && jetSound)
+        {
+            AudioManager.Instance.PlayPlayer(jetSound);
+        }    
+        yield return new WaitForSeconds(2);
+        jetIsPlaying = false;
 
-
+    }
+   
 }

@@ -34,10 +34,7 @@ public class GunManager : MonoBehaviour
     public AudioClip reloadSound;
     public AudioClip switchSound;
 
-    private void OnEnable()
-    {
-        playerMovment.gunManager = this;
-    }
+
     void Start()
     {
         playerMovment = GetComponentInParent<MovementScript>();
@@ -77,6 +74,7 @@ public class GunManager : MonoBehaviour
             else
             {
                 //TP();
+                AudioManager.Instance.PlayPlayer(tpSound);
                 cc.enabled = true;
                 Destroy(currnetBall);
                 playerMovment.gravity = 20f;

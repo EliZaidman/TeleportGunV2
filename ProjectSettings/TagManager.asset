@@ -11,6 +11,8 @@ TagManager:
   - Blue
   - metal
   - Glass
+  - NormalFloor
+  - ChainFloor
   layers:
   - Default
   - TransparentFX

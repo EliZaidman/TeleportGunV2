@@ -4,11 +4,10 @@ using FMOD.Studio;
 
 public class FirstPersonOcclusion : MonoBehaviour 
 {
-    
     [Header("FMOD Event")]
+    [SerializeField]
 
-    public EventReference EventReference;
-
+    public EventReference FMODEventPlayable;
     private string SelectAudio;
     private EventInstance Audio;
     private EventDescription AudioDes;
@@ -40,9 +39,10 @@ public class FirstPersonOcclusion : MonoBehaviour
 
         AudioDes = RuntimeManager.GetEventDescription(SelectAudio);
         AudioDes.getMaximumDistance(out MaxDistance);
+
         Listener = FindObjectOfType<StudioListener>();
     }
-
+    
     private void FixedUpdate()
     {
         Audio.isVirtual(out AudioIsVirtual);
@@ -80,7 +80,7 @@ public class FirstPersonOcclusion : MonoBehaviour
         CastLine(SoundRight, ListenerLeft);
         CastLine(SoundRight, listener);
         CastLine(SoundRight, ListenerRight);
-
+        
         CastLine(SoundAbove, ListenerAbove);
         CastLine(SoundBelow, ListenerBelow);
 
@@ -133,4 +133,5 @@ public class FirstPersonOcclusion : MonoBehaviour
     {
         Audio.setParameterByName("Occlusion", lineCastHitCount / 11);
     }
+  
 }
