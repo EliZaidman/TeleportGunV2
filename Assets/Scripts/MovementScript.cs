@@ -45,10 +45,6 @@ public class MovementScript : MonoBehaviour
         glideSlider.value = 1;
         characterController = GetComponent<CharacterController>();
 
-        // Lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
         lookXLimitDefult = lookXLimit;
     }
 
