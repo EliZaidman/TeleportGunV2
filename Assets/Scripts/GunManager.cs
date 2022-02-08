@@ -27,7 +27,7 @@ public class GunManager : MonoBehaviour
     public Image blackFIll;
 
     public Animation shootAnim;
-    
+
     LineRenderer lineRenderer;
     public AudioClip shotingSound;
     public AudioClip tpSound;
@@ -46,9 +46,11 @@ public class GunManager : MonoBehaviour
 
     }
 
-    
+
 
     public int i;
+    public bool isStuck = false;
+
     void Update()
     {
         BulletTypeSelector();
@@ -75,26 +77,52 @@ public class GunManager : MonoBehaviour
 
             else
             {
-                //TP();
-                cc.enabled = true;
-                Destroy(currnetBall);
-                playerMovment.gravity = 20f;
+                Debug.Log("Else");
+                if (currnetBall.layer == 11)
+                {
+                    TP();
+                    Destroy(currnetBall);
+                    playerMovment.gravity = 20f;
+                    Debug.Log("RED");
+
+                }
+
+                if (currnetBall.layer == 10)
+                {
+                    cc.enabled = true;
+                    Destroy(currnetBall);
+                    playerMovment.gravity = 20f;
+                    isStuck = false;
+                }
+
+                if (currnetBall.layer == 9)
+                {
+                    cc.enabled = true;
+                    Destroy(currnetBall);
+                    playerMovment.gravity = 20f;
+                }
+
 
             }
             return;
         }
 
-        if (currnetBall != null)
+        if (currnetBallPos != null)
         {
-            if (Input.GetMouseButton(0))
-                Drag();
+
+                if (isStuck)
+                {
+                    if (Input.GetMouseButton(0))
+                        Drag();
+                }
+            
 
         }
-
+            
 
         if (currnetBall)
         {
-        
+
             if (Input.GetKeyDown(KeyCode.R))
             {
                 StartCoroutine(Reload());
@@ -119,7 +147,7 @@ public class GunManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            ChooseToRender();        
+            ChooseToRender();
         }
 
 
@@ -154,7 +182,7 @@ public class GunManager : MonoBehaviour
         {
             playerMovment.lookXLimit = playerMovment.lookXLimitDefult;
             Camera.main.fieldOfView = 105;
-            
+
         }
 
 
@@ -173,7 +201,7 @@ public class GunManager : MonoBehaviour
             return;
         }
 
-        cc.enabled = false;     
+        cc.enabled = false;
         player.transform.position = currnetBallPos;
         cc.enabled = true;
 
@@ -182,7 +210,7 @@ public class GunManager : MonoBehaviour
         Debug.Log(player.transform.position.ToString());
         AudioManager.Instance.Play(tpSound);
         Destroy(currnetBall);
-        Debug.Log(player.transform.position.ToString());    
+        Debug.Log(player.transform.position.ToString());
 
 
 
@@ -192,7 +220,7 @@ public class GunManager : MonoBehaviour
     private void Drag()
     {
         cc.enabled = false;
-        player.transform.position = Vector3.Lerp(player.transform.position, currnetBallPos, Time.deltaTime * pullSpeed);
+        player.transform.position = 1.000005f * Vector3.Lerp(player.transform.position, currnetBallPos, Time.deltaTime);
 
         //cc.enabled = true;
     }
@@ -278,5 +306,5 @@ public class GunManager : MonoBehaviour
         Debug.Log("After");
         shootAnim.Stop("Reload");
     }
-     
+
 }

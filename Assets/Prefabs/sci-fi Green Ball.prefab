@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 510698091647549193}
   - component: {fileID: 4094775402575330162}
   - component: {fileID: 3226937446477526885}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Particle revolver 001 Megido (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4829,7 +4829,7 @@ GameObject:
   - component: {fileID: 5215720816201419330}
   - component: {fileID: 4235637616780347316}
   - component: {fileID: 6803848938855786714}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Particle revolver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9615,7 +9615,7 @@ GameObject:
   - component: {fileID: 3826489393245925857}
   - component: {fileID: 7133694435279890749}
   - component: {fileID: -212631916711884698}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: sci-fi Green Ball
   m_TagString: Green
   m_Icon: {fileID: 0}
@@ -14561,7 +14561,7 @@ GameObject:
   - component: {fileID: 3994513482638457773}
   - component: {fileID: 8787565282348213747}
   - component: {fileID: 4895016800168220515}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Sphere014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14643,7 +14643,7 @@ GameObject:
   - component: {fileID: 6933793226911073507}
   - component: {fileID: 4828513145482787726}
   - component: {fileID: 4985430207654360564}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Sphere014 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14724,7 +14724,7 @@ GameObject:
   - component: {fileID: 71764882683056810}
   - component: {fileID: 893621081891751573}
   - component: {fileID: 3210490030303833654}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Sphere014 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8239635472916637471}
   - component: {fileID: 8239635472916637465}
   - component: {fileID: 8239635472916637470}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glass Window
   m_TagString: Glass
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2ce01831e9f3ae441bb48623e5fbe0c0, type: 2}
+  - {fileID: 2100000, guid: 75cf4fa0e1c93664192952ae55637e88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,7 +112,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &8239635472916637465
 MonoBehaviour:
@@ -141,6 +141,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   immediate: 1
   shards:
-    min: 40
-    max: 40
+    min: 20
+    max: 20
   shardsPerFrame: 2
