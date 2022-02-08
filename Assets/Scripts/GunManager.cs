@@ -10,7 +10,7 @@ public class GunManager : MonoBehaviour
     [SerializeField] private CharacterController cc;
 
     MovementScript playerMovment;
-    public float pullSpeed = 0.5f;
+    public float pullSpeed = 10000;
     public GameObject[] projectile;
     public float launchVelocity;
     public GameObject currnetBall;
@@ -74,36 +74,26 @@ public class GunManager : MonoBehaviour
 
             else
             {
-                TP();
-                //cc.enabled = true;
-                //Destroy(currnetBall);
-
+                //TP();
                 cc.enabled = true;
                 Destroy(currnetBall);
+                playerMovment.gravity = 20f;
 
             }
             return;
         }
 
+        if (currnetBall != null)
+        {
+            if (Input.GetMouseButton(0))
+                Drag();
+
+        }
 
 
         if (currnetBall)
         {
-            if (Input.GetMouseButtonUp(0))
-            {
-
-            }
-            
-
-            //if (Input.GetMouseButtonUp(0))
-            //{
-            //    Destroy(currnetBall);
-            //    cc.enabled = false;
-            //    player.transform.position = currnetBallPos;
-            //    cc.enabled = true;
-
-            //}
-
+        
             if (Input.GetKeyDown(KeyCode.R))
             {
                 StartCoroutine(Reload());
@@ -202,7 +192,8 @@ public class GunManager : MonoBehaviour
     {
         cc.enabled = false;
         player.transform.position = Vector3.Lerp(player.transform.position, currnetBallPos, Time.deltaTime * pullSpeed);
-        cc.enabled = true;
+
+        //cc.enabled = true;
     }
 
     private void BulletTypeSelector()
