@@ -11,7 +11,12 @@ TagManager:
   - Blue
   - metal
   - Glass
+<<<<<<< HEAD
   - Wall
+=======
+  - NormalFloor
+  - ChainFloor
+>>>>>>> origin/BenHaimZ
   layers:
   - Default
   - TransparentFX

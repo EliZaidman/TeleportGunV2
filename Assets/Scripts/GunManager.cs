@@ -33,10 +33,15 @@ public class GunManager : MonoBehaviour
     public AudioClip tpSound;
     public AudioClip reloadSound;
     public AudioClip switchSound;
+<<<<<<< HEAD
     private void Awake()
     {
 
     }
+=======
+
+
+>>>>>>> origin/BenHaimZ
     void Start()
     {
         playerMovment = GetComponentInParent<MovementScript>();
@@ -71,11 +76,13 @@ public class GunManager : MonoBehaviour
                                                      (0, 0, powerSlider.value * launchVelocity));
                 //Mathf.Clamp(0, 100, launchVelocity);
                 shootAnim.Play("Shoot");
-                AudioManager.Instance.Play(shotingSound);
+                AudioManager.Instance.PlayPlayer(shotingSound);
+                
             }
 
             else
             {
+<<<<<<< HEAD
                 Debug.Log("Else");
                 if (currnetBall.layer == 11)
                 {
@@ -101,6 +108,13 @@ public class GunManager : MonoBehaviour
                     playerMovment.gravity = 20f;
                 }
 
+=======
+                //TP();
+                AudioManager.Instance.PlayPlayer(tpSound);
+                cc.enabled = true;
+                Destroy(currnetBall);
+                playerMovment.gravity = 20f;
+>>>>>>> origin/BenHaimZ
 
             }
             return;
@@ -108,6 +122,11 @@ public class GunManager : MonoBehaviour
 
         if (currnetBallPos != null)
         {
+<<<<<<< HEAD
+=======
+            if (Input.GetMouseButton(0))
+            Drag();
+>>>>>>> origin/BenHaimZ
 
                 if (isStuck)
                 {
@@ -207,7 +226,7 @@ public class GunManager : MonoBehaviour
         Debug.Log(currnetBall.transform.position.ToString());
 
         Debug.Log(player.transform.position.ToString());
-        AudioManager.Instance.Play(tpSound);
+        AudioManager.Instance.PlayPlayer(tpSound);
         Destroy(currnetBall);
         Debug.Log(player.transform.position.ToString());
 
@@ -219,9 +238,14 @@ public class GunManager : MonoBehaviour
     private void Drag()
     {
         cc.enabled = false;
+<<<<<<< HEAD
         player.transform.position = 1.000005f * Vector3.Lerp(player.transform.position, currnetBallPos, Time.deltaTime);
 
         //cc.enabled = true;
+=======
+        player.transform.position = Vector3.Lerp(player.transform.position, currnetBallPos, Time.deltaTime * pullSpeed);
+         //cc.enabled = true;
+>>>>>>> origin/BenHaimZ
     }
 
     private void BulletTypeSelector()
@@ -252,7 +276,7 @@ public class GunManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            AudioManager.Instance.Play(switchSound);
+            AudioManager.Instance.PlayPlayer(switchSound);
             redBulletActive = true;
             greenBulletActive = false;
             blackBulletActive = false;
@@ -262,7 +286,7 @@ public class GunManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            AudioManager.Instance.Play(switchSound);
+            AudioManager.Instance.PlayPlayer(switchSound);
             redBulletActive = false;
             greenBulletActive = true;
             blackBulletActive = false;
@@ -273,7 +297,7 @@ public class GunManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            AudioManager.Instance.Play(switchSound);
+            AudioManager.Instance.PlayPlayer(switchSound);
             redBulletActive = false;
             greenBulletActive = false;
             blackBulletActive = true;
@@ -298,7 +322,7 @@ public class GunManager : MonoBehaviour
     IEnumerator Reload()
     {
         Destroy(currnetBall);
-        AudioManager.Instance.Play(reloadSound);
+        AudioManager.Instance.PlayPlayer(reloadSound);
         shootAnim.Play("Reload");
         Debug.Log("Before");
         yield return new WaitForSeconds(1.5f);
