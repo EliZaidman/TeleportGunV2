@@ -13,6 +13,7 @@ public class LoadGame : MonoBehaviour
         player.SetActive(true);
         gun.SetActive(true);
         canvas.SetActive(false);
+        player.GetComponent<MovementScript>().gunManager = gun.GetComponent<GunManager>();
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

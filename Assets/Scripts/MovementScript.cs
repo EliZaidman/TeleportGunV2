@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class MovementScript : MonoBehaviour
 {
-    GunManager gunManager;
+    public GunManager gunManager;
 
 
     public float walkingSpeed = 7.5f;
