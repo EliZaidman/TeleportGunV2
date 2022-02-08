@@ -24,7 +24,5 @@ namespace FMODUnity
             EditorGUILayout.PropertyField(attenuationObject);
             serializedObject.ApplyModifiedProperties();
         }
-       
     }
-    
 }

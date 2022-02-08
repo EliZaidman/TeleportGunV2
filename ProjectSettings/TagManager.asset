@@ -3,34 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Green
-  - Red
-  - Black
-  - VelocityWall
-  - Blue
-  - metal
-  - Glass
-<<<<<<< HEAD
-  - Wall
-=======
-  - NormalFloor
-  - ChainFloor
->>>>>>> origin/BenHaimZ
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Ground
-  - Gun
-  - Bullet
-  - Brakeable
-  - Drag
-  - TP
-  - GunModel
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

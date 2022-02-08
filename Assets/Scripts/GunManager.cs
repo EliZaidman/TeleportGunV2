@@ -33,15 +33,11 @@ public class GunManager : MonoBehaviour
     public AudioClip tpSound;
     public AudioClip reloadSound;
     public AudioClip switchSound;
-<<<<<<< HEAD
     private void Awake()
     {
 
     }
-=======
 
-
->>>>>>> origin/BenHaimZ
     void Start()
     {
         playerMovment = GetComponentInParent<MovementScript>();
@@ -82,7 +78,6 @@ public class GunManager : MonoBehaviour
 
             else
             {
-<<<<<<< HEAD
                 Debug.Log("Else");
                 if (currnetBall.layer == 11)
                 {
@@ -108,13 +103,11 @@ public class GunManager : MonoBehaviour
                     playerMovment.gravity = 20f;
                 }
 
-=======
                 //TP();
                 AudioManager.Instance.PlayPlayer(tpSound);
                 cc.enabled = true;
                 Destroy(currnetBall);
                 playerMovment.gravity = 20f;
->>>>>>> origin/BenHaimZ
 
             }
             return;
@@ -122,12 +115,6 @@ public class GunManager : MonoBehaviour
 
         if (currnetBallPos != null)
         {
-<<<<<<< HEAD
-=======
-            if (Input.GetMouseButton(0))
-            Drag();
->>>>>>> origin/BenHaimZ
-
                 if (isStuck)
                 {
                     if (Input.GetMouseButton(0))
@@ -223,12 +210,10 @@ public class GunManager : MonoBehaviour
         player.transform.position = currnetBallPos;
         cc.enabled = true;
 
-        Debug.Log(currnetBall.transform.position.ToString());
-
         Debug.Log(player.transform.position.ToString());
         AudioManager.Instance.PlayPlayer(tpSound);
         Destroy(currnetBall);
-        Debug.Log(player.transform.position.ToString());
+
 
 
 
@@ -238,14 +223,11 @@ public class GunManager : MonoBehaviour
     private void Drag()
     {
         cc.enabled = false;
-<<<<<<< HEAD
+
         player.transform.position = 1.000005f * Vector3.Lerp(player.transform.position, currnetBallPos, Time.deltaTime);
 
         //cc.enabled = true;
-=======
-        player.transform.position = Vector3.Lerp(player.transform.position, currnetBallPos, Time.deltaTime * pullSpeed);
          //cc.enabled = true;
->>>>>>> origin/BenHaimZ
     }
 
     private void BulletTypeSelector()

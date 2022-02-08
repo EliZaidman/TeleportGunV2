@@ -36,9 +36,7 @@ public class MovementScript : MonoBehaviour
     public float speed = 3.0F;
     public float rotateSpeed = 100.0F;
 
-<<<<<<< HEAD
-    
-=======
+
     public AudioClip jetSound;
     public AudioClip jumpSound;
     public AudioClip metalFloor;
@@ -49,7 +47,6 @@ public class MovementScript : MonoBehaviour
 
     public bool jetIsPlaying = false;
 
->>>>>>> origin/BenHaimZ
     void Start()
     {
         gunManager = GetComponentInChildren<GunManager>();
@@ -63,8 +60,8 @@ public class MovementScript : MonoBehaviour
 
     void Update()
     {
-    // We are grounded, so recalculate move direction based on axes
-    Vector3 forward = transform.TransformDirection(Vector3.forward);
+        // We are grounded, so recalculate move direction based on axes
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
         // Press Left Shift to run
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
@@ -76,10 +73,8 @@ public class MovementScript : MonoBehaviour
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;
-<<<<<<< HEAD
-=======
+
             AudioManager.Instance.PlayPlayer(jumpSound);
->>>>>>> origin/BenHaimZ
         }
         else
         {
@@ -87,12 +82,6 @@ public class MovementScript : MonoBehaviour
 
         }
 
-
-       
-
-        // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
-        // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
-        // as an acceleration (ms^-2)
         if (!characterController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
@@ -100,23 +89,8 @@ public class MovementScript : MonoBehaviour
 
         if (!gunManager.isStuck)
         {
-<<<<<<< HEAD
+
             if (Input.GetKey(KeyCode.F) && glideSlider)
-=======
-            if (!jetIsPlaying)
-            {
-                StartCoroutine(JetSound());
-            }
-            
-            glideSlider.gameObject.SetActive(true);
-            glideSlider.value -= 0.4F * Time.deltaTime;
-            
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                glideSlider.value -= 0.5F * Time.deltaTime;
-            }
-            if (glideSlider.value == 0)
->>>>>>> origin/BenHaimZ
             {
                 glideSlider.gameObject.SetActive(true);
                 glideSlider.value -= 0.4F * Time.deltaTime;
@@ -128,9 +102,13 @@ public class MovementScript : MonoBehaviour
                 {
                     glideSlider.gameObject.SetActive(false);
                 }
-
+                if (!jetIsPlaying)
+                {
+                    StartCoroutine(JetSound());
+                }
             }
         }
+
         if (/*Input.GetKeyUp(KeyCode.F) && */characterController.isGrounded)
         {
             glideSlider.value = 1;
@@ -160,12 +138,12 @@ public class MovementScript : MonoBehaviour
                 gravity = 1;
 
             }
-            
+
             if (gravity == 1)
             {
                 gravity = 1;
             }
-            
+
         }
         else
         {
@@ -203,7 +181,7 @@ public class MovementScript : MonoBehaviour
 
 
 
-}
+    }
     private void FixedUpdate()
     {
         // Move the controller
@@ -217,26 +195,26 @@ public class MovementScript : MonoBehaviour
         transform.Rotate(0, Input.GetAxis("Horizontal") * rotateSpeed, 0);
         Debug.Log("allah");
         moveDirection.y = jumpSpeed * jumpForce;
-        
+
         if (!characterController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
         }
-       
+
     }
-    
+
     public void Throw()
     {
 
 
-            // Rotate around y - axis
-            transform.Rotate(0, Input.GetAxis("Horizontal") * rotateSpeed, 0);
+        // Rotate around y - axis
+        transform.Rotate(0, Input.GetAxis("Horizontal") * rotateSpeed, 0);
 
-            // Move forward / backward
-            Vector3 forward = transform.TransformDirection(Vector3.forward);
-            float curSpeed = speed * Input.GetAxis("Vertical");
-            gameObject.GetComponent<CharacterController>().SimpleMove(forward * curSpeed);
-        
+        // Move forward / backward
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        float curSpeed = speed * Input.GetAxis("Vertical");
+        gameObject.GetComponent<CharacterController>().SimpleMove(forward * curSpeed);
+
     }
 
     IEnumerator JetSound()
@@ -245,10 +223,10 @@ public class MovementScript : MonoBehaviour
         if (glideSlider && jetSound)
         {
             AudioManager.Instance.PlayPlayer(jetSound);
-        }    
+        }
         yield return new WaitForSeconds(2);
         jetIsPlaying = false;
 
     }
-   
+
 }

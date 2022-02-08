@@ -5,7 +5,6 @@ namespace FMODUnity
     [AddComponentMenu("FMOD Studio/FMOD Studio Listener")]
     public class StudioListener : MonoBehaviour
     {
-        public LayerMask occlusionMask = -1;
 #if UNITY_PHYSICS_EXIST
         Rigidbody rigidBody;
 #endif

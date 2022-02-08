@@ -39,10 +39,8 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
 		PlayMusic(BgMusic);
-<<<<<<< HEAD
-=======
-		Play(BgMusicOc);
->>>>>>> origin/BenHaimZ
+
+
     }
 
     // Play a single clip through the sound effects source.
