@@ -63,7 +63,7 @@ public class MovementScript : MonoBehaviour
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;
-            AudioManager.Instance.Play(jumpSound);
+            AudioManager.Instance.PlayPlayer(jumpSound);
         }
         else
         {
@@ -86,7 +86,7 @@ public class MovementScript : MonoBehaviour
         {
             glideSlider.gameObject.SetActive(true);
             glideSlider.value -= 0.4F * Time.deltaTime;
-            AudioManager.Instance.Play(jetSound);
+            AudioManager.Instance.PlayPlayer(jetSound);
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 glideSlider.value -= 0.5F * Time.deltaTime;

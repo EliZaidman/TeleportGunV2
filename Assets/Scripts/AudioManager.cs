@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
 		PlayMusic(BgMusic);
-		PlayPlayer(BgMusicOc);
+		Play(BgMusicOc);
     }
 
     // Play a single clip through the sound effects source.

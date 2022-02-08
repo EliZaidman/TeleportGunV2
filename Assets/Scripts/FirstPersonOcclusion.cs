@@ -2,13 +2,13 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 
-public class FirstPersonOcclusion : MonoBehaviour
+public class FirstPersonOcclusion : MonoBehaviour 
 {
     
     [Header("FMOD Event")]
-    [SerializeField]
-    [EventRef]
-    [System.Obsolete]
+
+    public EventReference EventReference;
+
     private string SelectAudio;
     private EventInstance Audio;
     private EventDescription AudioDes;
