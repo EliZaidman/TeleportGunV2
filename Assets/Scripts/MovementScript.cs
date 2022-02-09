@@ -39,11 +39,7 @@ public class MovementScript : MonoBehaviour
 
     public AudioClip jetSound;
     public AudioClip jumpSound;
-    public AudioClip metalFloor;
-
-
-    private bool isJetActive;
-    private bool isWalking;
+    public AudioClip overHeat;
 
     public bool jetIsPlaying = false;
 
@@ -93,19 +89,17 @@ public class MovementScript : MonoBehaviour
             if (Input.GetKey(KeyCode.F) && glideSlider)
             {
                 glideSlider.gameObject.SetActive(true);
-                glideSlider.value -= 0.4F * Time.deltaTime;
+                glideSlider.value -= 0.3F * Time.deltaTime;
+                JetSound();
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
-                    glideSlider.value -= 0.5F * Time.deltaTime;
+                    glideSlider.value -= 0.4F * Time.deltaTime;
                 }
                 if (glideSlider.value == 0)
                 {
                     glideSlider.gameObject.SetActive(false);
                 }
-                if (!jetIsPlaying)
-                {
-                    StartCoroutine(JetSound());
-                }
+                
             }
         }
 
@@ -117,8 +111,7 @@ public class MovementScript : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.F))
         {
-            AudioManager.Instance.PlayPlayer(jetSound);
-
+            StartCoroutine(StopJet(0.8f));   
         }
 
         // Player and Camera rotation
@@ -178,7 +171,10 @@ public class MovementScript : MonoBehaviour
 
         }
 
-
+        //if (!jetIsPlaying)
+        //{
+        //    AudioManager.Instance.PlayerSource.Stop();
+        //}
 
 
     }
@@ -217,16 +213,22 @@ public class MovementScript : MonoBehaviour
 
     }
 
-    IEnumerator JetSound()
+    private void JetSound()
     {
-        jetIsPlaying = true;
-        if (glideSlider && jetSound)
+        AudioManager.Instance.HoverSource.Stop();
+        if (glideSlider && !jetIsPlaying)
         {
             AudioManager.Instance.PlayPlayer(jetSound);
         }
-        yield return new WaitForSeconds(2);
-        jetIsPlaying = false;
+        jetIsPlaying = true;
 
     }
 
+    IEnumerator StopJet(float waitTime)
+    {
+        yield return new WaitForSeconds(0.3f);
+        AudioManager.Instance.PlayHover(overHeat);
+        yield return new WaitForSeconds(waitTime);
+        jetIsPlaying = false;
+    }
 }
