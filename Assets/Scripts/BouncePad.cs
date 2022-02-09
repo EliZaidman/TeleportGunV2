@@ -10,7 +10,8 @@ public class BouncePad : MonoBehaviour
 
      Vector3 direction;
 
-
+    public AudioSource audiosource;
+    public AudioClip Clip;
 
 
     // Start is called before the first frame update    
@@ -31,8 +32,14 @@ public class BouncePad : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("inside");
+            PlaySound(Clip);
             player.GetComponent<MovementScript>().Push(jumpForce);
             player.GetComponent<MovementScript>().glideSlider.value = 1;
         }
+    }
+    public void PlaySound(AudioClip clip)
+    {
+        audiosource.clip = clip;
+        audiosource.Play();
     }
 }

@@ -6,41 +6,66 @@ using UnityEngine.Events;
 public class Interactable : MonoBehaviour
 {
     public bool isInRange;
-    public KeyCode interactKey;
-    public UnityEvent interactAction;
-   
+    //public KeyCode interactKey;
+    //public UnityEvent interactAction;
+    public Rigidbody rb;
+    public float gravitForce;
 
-  
 
-
-    void Update()
+    private void Start()
     {
-        if (isInRange == true)
-        {
-            if (Input.GetKeyDown(interactKey))
-            {
-                
-                interactAction.Invoke();
-            }
-        }
+        rb = gameObject.GetComponent<Rigidbody>();
+        rb.useGravity = true;
+        rb.AddForce(0, gravitForce, 0);
+    }
+
+    private void OnEnable()
+    {
         
     }
-    
+    void Update()
+    {
+       
+        
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.tag == "Player")
         {
-            isInRange = true;
+            rb.useGravity = true;
+            rb.AddForce(0, gravitForce, 0);
             Debug.Log("in range");
+
         }
-       
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+
+        
+
+
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
         {
             isInRange = false;
             Debug.Log("not in range");
         }
+    }
+    public void UseGravity()
+    {
+        //if (!rb.useGravity)
+        //{
+            
+        //    rb.useGravity = true;
+        //}
+        //else
+            
+        rb.useGravity = true;
+        rb.AddForce(0, gravitForce, 0);
+       
+        Debug.Log("inGravity");
+
     }
 }

@@ -2,7 +2,7 @@
 //using FMODUnity;
 //using FMOD.Studio;
 
-//public class FirstPersonOcclusion : MonoBehaviour 
+//public class FirstPersonOcclusion : MonoBehaviour
 //{
 //    [Header("FMOD Event")]
 //    [SerializeField]
@@ -39,10 +39,11 @@
 
 //        AudioDes = RuntimeManager.GetEventDescription(SelectAudio);
 //        AudioDes.getMaximumDistance(out MaxDistance);
+        
 
 //        Listener = FindObjectOfType<StudioListener>();
 //    }
-    
+
 //    private void FixedUpdate()
 //    {
 //        Audio.isVirtual(out AudioIsVirtual);
@@ -80,7 +81,7 @@
 //        CastLine(SoundRight, ListenerLeft);
 //        CastLine(SoundRight, listener);
 //        CastLine(SoundRight, ListenerRight);
-        
+
 //        CastLine(SoundAbove, ListenerAbove);
 //        CastLine(SoundBelow, ListenerBelow);
 
@@ -133,5 +134,5 @@
 //    {
 //        Audio.setParameterByName("Occlusion", lineCastHitCount / 11);
 //    }
-  
+
 //}
