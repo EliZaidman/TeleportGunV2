@@ -104,7 +104,6 @@ public class GunManager : MonoBehaviour
                 }
 
                 //TP();
-                AudioManager.Instance.PlayPlayer(tpSound);
                 cc.enabled = true;
                 Destroy(currnetBall);
                 playerMovment.gravity = 20f;

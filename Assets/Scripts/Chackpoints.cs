@@ -28,6 +28,7 @@ public class Chackpoints : MonoBehaviour
             Debug.Log("PLAYER! Trigger");
             cc.enabled = false;
             player.transform.position = chackpoint.transform.position;
+            
             cc.enabled = true;
         }
     }
