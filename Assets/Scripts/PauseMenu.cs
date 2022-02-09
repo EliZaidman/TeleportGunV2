@@ -10,10 +10,13 @@ public class PauseMenu : MonoBehaviour
     public GunMove gunMove;
     public MovementScript movement;
     public GameObject mainMenu;
-    
-    
+    private bool insideMenu = false;
+
+
     void Update()
     {
+        if (!insideMenu)
+        {
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -21,8 +24,9 @@ public class PauseMenu : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
                 StartCoroutine(StopGame());
-
+                insideMenu = true;
             }
+        }
         
 
     }
@@ -35,6 +39,7 @@ public class PauseMenu : MonoBehaviour
         gunMove.enabled = false;
         movement.enabled = false;
         //Time.timeScale = 0;
+
     }
 
     public void ResumeGame()
@@ -46,6 +51,7 @@ public class PauseMenu : MonoBehaviour
         movement.enabled = true;
         //Time.timeScale = 1;
         Menu.SetActive(false);
+        insideMenu = true;
 
 
     }
