@@ -63,7 +63,7 @@ public class GunManager : MonoBehaviour
         //launchVelocity = Mathf.Clamp(launchVelocity, 1, 100);
 
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonDown(0))
         {
             if (currnetBall == null)
             {
@@ -91,9 +91,9 @@ public class GunManager : MonoBehaviour
                 if (currnetBall.layer == 10)
                 {
                     cc.enabled = true;
-                    Destroy(currnetBall);
+                    //Destroy(currnetBall);
                     playerMovment.gravity = 20f;
-                    isStuck = false;
+                   // isStuck = false;
                 }
 
                 if (currnetBall.layer == 9)
@@ -105,7 +105,7 @@ public class GunManager : MonoBehaviour
 
                 //TP();
                 cc.enabled = true;
-                Destroy(currnetBall);
+               // Destroy(currnetBall);
                 playerMovment.gravity = 20f;
 
             }
@@ -114,12 +114,25 @@ public class GunManager : MonoBehaviour
 
         if (currnetBallPos != null)
         {
+            if (currnetBall.layer == 10)
+            {
                 if (isStuck)
                 {
                     if (Input.GetMouseButton(0))
                         Drag();
+
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        cc.enabled = true;
+                        Destroy(currnetBall);
+                        playerMovment.gravity = 20f;
+                        isStuck = false;
+                    }
+
                 }
-            
+            }
+
+
 
         }
             
@@ -136,7 +149,6 @@ public class GunManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Q))
         {
-            renderLine = true;
             launchVelocity -= 0.08f;
             powerSlider.value -= 0.0008f;
 
@@ -144,7 +156,6 @@ public class GunManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E))
         {
-            renderLine = true;
             launchVelocity += 0.08f;
             powerSlider.value += 0.0008f;
         }
@@ -159,7 +170,7 @@ public class GunManager : MonoBehaviour
         {
             lineRenderer.enabled = true;
         }
-        else
+        if (!renderLine)
         {
             lineRenderer.enabled = false;
         }
@@ -290,14 +301,15 @@ public class GunManager : MonoBehaviour
     }
     private void ChooseToRender()
     {
-        if (!renderLine)
-        {
-            renderLine = true;
-        }
-        else
-        {
-            renderLine = false;
-        }
+        renderLine = !renderLine;
+        //if (renderLine)
+        //{
+        //    renderLine = true;
+        //}
+        //else
+        //{
+        //    renderLine = false;
+        //}
     }
 
     IEnumerator Reload()
