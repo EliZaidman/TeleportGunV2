@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
     {
         gunManager = FindObjectOfType<GunManager>();
         getRigidBody = gameObject.GetComponent<Rigidbody>();
+        
     }
 
     private void OnEnable()

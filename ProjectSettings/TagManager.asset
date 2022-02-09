@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Red
+  - Green
+  - Blue
+  - Wall
+  - Glass
+  - NormalFloor
+  - metal
+  - ChainFloor
   layers:
   - Default
   - TransparentFX

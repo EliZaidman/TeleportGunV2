@@ -15,7 +15,7 @@ public class ChkCollison : MonoBehaviour
         
     }
      
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
 
 
@@ -36,7 +36,26 @@ public class ChkCollison : MonoBehaviour
         }
 
     }
-   public IEnumerator FootSound()
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "metal")
+        {
+            Debug.Log("test");
+            StartCoroutine(FootSound());
+        }
+        if (collision.gameObject.tag == "NormalFloor")
+        {
+            Debug.Log("test");
+            StartCoroutine(NormalSound());
+        }
+        if (collision.gameObject.tag == "ChainFloor")
+        {
+            Debug.Log("test");
+            StartCoroutine(ChainSound());
+        }
+    }
+    public IEnumerator FootSound()
     {
         Debug.Log("out");
         isWalking = true;
@@ -46,8 +65,9 @@ public class ChkCollison : MonoBehaviour
 
             AudioManager.Instance.PlayPlayer(metalFloor);
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         isWalking = false;
+        AudioManager.Instance.PlayerSource.Stop();
 
     }
     public IEnumerator ChainSound()
@@ -60,9 +80,9 @@ public class ChkCollison : MonoBehaviour
 
             AudioManager.Instance.PlayPlayer(ChainFloor);
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         isWalking = false;
-
+        AudioManager.Instance.PlayerSource.Stop();
     }
     public IEnumerator NormalSound()
     {
@@ -74,8 +94,8 @@ public class ChkCollison : MonoBehaviour
 
             AudioManager.Instance.PlayPlayer(NormalFloor);
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         isWalking = false;
-
+        AudioManager.Instance.PlayerSource.Stop();
     }
 }
