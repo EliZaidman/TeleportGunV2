@@ -14,7 +14,7 @@ public class BouncePad : MonoBehaviour
     public AudioClip Clip;
 
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update    
     void Start()
     {
         player = GameObject.Find("Character");

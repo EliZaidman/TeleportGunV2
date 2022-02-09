@@ -115,7 +115,7 @@ public class MovementScript : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.F))
         {
-            StartCoroutine(StopJet(0.8f));   
+            StartCoroutine(StopJet(0.5f));   
         }
 
         // Player and Camera rotation
