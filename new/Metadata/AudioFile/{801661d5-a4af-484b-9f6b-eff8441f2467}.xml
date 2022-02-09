@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{801661d5-a4af-484b-9f6b-eff8441f2467}">
+		<property name="assetPath">
+			<value>Audio - realfloor.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.1019954648526076</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{372cc31f-f280-4705-a94a-1c66ed87dc7c}</destination>
+		</relationship>
+	</object>
+</objects>

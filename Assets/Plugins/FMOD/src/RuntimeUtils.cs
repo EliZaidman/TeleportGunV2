@@ -195,6 +195,7 @@ namespace FMODUnity
         MouseExit,
         MouseDown,
         MouseUp,
+        collisionStay
     }
 
     public enum LoaderGameEvent : int

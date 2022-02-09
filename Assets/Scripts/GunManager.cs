@@ -33,6 +33,9 @@ public class GunManager : MonoBehaviour
     public AudioClip tpSound;
     public AudioClip reloadSound;
     public AudioClip switchSound;
+    public AudioClip emptyMag;
+
+    public bool hasBullets = false;
     private void Awake()
     {
 
@@ -74,56 +77,63 @@ public class GunManager : MonoBehaviour
 
         }
         //launchVelocity = Mathf.Clamp(launchVelocity, 1, 100);
-
-
-        if (Input.GetMouseButtonDown(0))
+        if (!hasBullets)
         {
-            if (currnetBall == null)
-            {
-                currnetBall = Instantiate(projectile[i], ShotPoint.position, ShotPoint.rotation);
-                currnetBall.GetComponent<Rigidbody>().AddRelativeForce(new Vector3
-                                                     (0, 0, powerSlider.value * launchVelocity));
-                //Mathf.Clamp(0, 100, launchVelocity);
-                shootAnim.Play("Shoot");
-                AudioManager.Instance.PlayPlayer(shotingSound);
-                
-            }
-
-            else
-            {
-                Debug.Log("Else");
-                if (currnetBall.layer == 11)
-                {
-                    TP();
-                    Destroy(currnetBall);
-                    playerMovment.gravity = 20f;
-                    Debug.Log("RED");
-
-                }
-
-                if (currnetBall.layer == 10)
-                {
-                    cc.enabled = true;
-                    //Destroy(currnetBall);
-                    playerMovment.gravity = 20f;
-                   // isStuck = false;
-                }
-
-                if (currnetBall.layer == 9)
-                {
-                    cc.enabled = true;
-                    Destroy(currnetBall);
-                    playerMovment.gravity = 20f;
-                }
-
-                //TP();
-                cc.enabled = true;
-               // Destroy(currnetBall);
-                playerMovment.gravity = 20f;
-
-            }
-            return;
+            if(Input.GetMouseButtonDown(0))
+            AudioManager.Instance.PlayWorp(emptyMag);
         }
+        if (hasBullets)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (currnetBall == null)
+                {
+                    currnetBall = Instantiate(projectile[i], ShotPoint.position, ShotPoint.rotation);
+                    currnetBall.GetComponent<Rigidbody>().AddRelativeForce(new Vector3
+                                                         (0, 0, powerSlider.value * launchVelocity));
+                    //Mathf.Clamp(0, 100, launchVelocity);
+                    shootAnim.Play("Shoot");
+                    AudioManager.Instance.PlayPlayer(shotingSound);
+
+                }
+
+                else
+                {
+                    Debug.Log("Else");
+                    if (currnetBall.layer == 11)
+                    {
+                        TP();
+                        Destroy(currnetBall);
+                        playerMovment.gravity = 20f;
+                        Debug.Log("RED");
+
+                    }
+
+                    if (currnetBall.layer == 10)
+                    {
+                        cc.enabled = true;
+                        //Destroy(currnetBall);
+                        playerMovment.gravity = 20f;
+                        // isStuck = false;
+                    }
+
+                    if (currnetBall.layer == 9)
+                    {
+                        cc.enabled = true;
+                        Destroy(currnetBall);
+                        playerMovment.gravity = 20f;
+                    }
+
+                    //TP();
+                    cc.enabled = true;
+                    // Destroy(currnetBall);
+                    playerMovment.gravity = 20f;
+
+                }
+                return;
+            }
+        }
+
 
         if (currnetBallPos != null)
         {

@@ -39,17 +39,17 @@ public class ChkCollison : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "metal")
+        if (collision.gameObject.tag == "metal" &&!isWalking)
         {
             Debug.Log("test");
             StartCoroutine(FootSound());
         }
-        if (collision.gameObject.tag == "NormalFloor")
+        if (collision.gameObject.tag == "NormalFloor" && !isWalking)
         {
             Debug.Log("test");
             StartCoroutine(NormalSound());
         }
-        if (collision.gameObject.tag == "ChainFloor")
+        if (collision.gameObject.tag == "ChainFloor" && !isWalking)
         {
             Debug.Log("test");
             StartCoroutine(ChainSound());
@@ -65,7 +65,7 @@ public class ChkCollison : MonoBehaviour
 
             AudioManager.Instance.PlayPlayer(metalFloor);
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         isWalking = false;
         AudioManager.Instance.PlayerSource.Stop();
 
@@ -80,7 +80,7 @@ public class ChkCollison : MonoBehaviour
 
             AudioManager.Instance.PlayPlayer(ChainFloor);
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         isWalking = false;
         AudioManager.Instance.PlayerSource.Stop();
     }
@@ -94,7 +94,7 @@ public class ChkCollison : MonoBehaviour
 
             AudioManager.Instance.PlayPlayer(NormalFloor);
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         isWalking = false;
         AudioManager.Instance.PlayerSource.Stop();
     }
