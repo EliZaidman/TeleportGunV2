@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
 	public AudioSource MusicSource;
 	public AudioSource PlayerSource;
 	public AudioSource HoverSource;
+	public AudioSource WarpSource;
 	
 
 	// Random pitch adjustment range.
@@ -64,6 +65,12 @@ public class AudioManager : MonoBehaviour
 	}
 
 	public void PlayHover(AudioClip clip)
+	{
+		PlayerSource.clip = clip;
+		PlayerSource.Play();
+	}
+
+	public void PlayWorp(AudioClip clip)
 	{
 		PlayerSource.clip = clip;
 		PlayerSource.Play();
