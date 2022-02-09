@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ae63e0c16edab40b987a6103df2104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 2
+  jumpForce: 10
   audiosource: {fileID: 1460349832}
   Clip: {fileID: 8300000, guid: 617f70b99800aa541aa3440c518187ff, type: 3}
 --- !u!65 &1515972296959850976
