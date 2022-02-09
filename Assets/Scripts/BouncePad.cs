@@ -32,7 +32,7 @@ public class BouncePad : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("inside");
-            PlaySound(Clip);
+            //PlaySound(Clip);
             player.GetComponent<MovementScript>().Push(jumpForce);
             player.GetComponent<MovementScript>().glideSlider.value = 1;
         }
