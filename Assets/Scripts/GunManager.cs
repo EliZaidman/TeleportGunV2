@@ -53,6 +53,19 @@ public class GunManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ChooseToRender();
+        }
+
+        if (renderLine)
+        {
+            lineRenderer.enabled = true;
+        }
+        if (!renderLine)
+        {
+            lineRenderer.enabled = false;
+        }
         BulletTypeSelector();
 
         if (currnetBall != null)
@@ -114,6 +127,7 @@ public class GunManager : MonoBehaviour
 
         if (currnetBallPos != null)
         {
+
             if (currnetBall.layer == 10)
             {
                 if (isStuck)
@@ -132,7 +146,7 @@ public class GunManager : MonoBehaviour
                 }
             }
 
-
+            
 
         }
             
@@ -160,20 +174,9 @@ public class GunManager : MonoBehaviour
             powerSlider.value += 0.0008f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            ChooseToRender();
-        }
 
 
-        if (renderLine)
-        {
-            lineRenderer.enabled = true;
-        }
-        if (!renderLine)
-        {
-            lineRenderer.enabled = false;
-        }
+
 
 
         if (!currnetBall)
