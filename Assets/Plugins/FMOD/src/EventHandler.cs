@@ -5,7 +5,7 @@ namespace FMODUnity
     public abstract class EventHandler : MonoBehaviour
     {
         public string CollisionTag = "";
-
+        bool isPlaying;
         protected virtual void Start()
         {
             HandleGameEvent(EmitterGameEvent.ObjectStart);
@@ -60,7 +60,15 @@ namespace FMODUnity
                 HandleGameEvent(EmitterGameEvent.TriggerExit2D);
             }
         }
-        #endif
+#endif
+        private void OnCollisionStay(Collision collision)
+        {
+            if (isPlaying)
+            {
+                HandleGameEvent(EmitterGameEvent.CollisionEnter);
+            }
+            
+        }
 
         void OnCollisionEnter()
         {

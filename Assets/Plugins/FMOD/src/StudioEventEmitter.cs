@@ -10,6 +10,7 @@ namespace FMODUnity
     {
         public EventReference EventReference;
 
+       
         [Obsolete("Use the EventReference field instead")]
         public string Event = "";
 
@@ -328,5 +329,6 @@ namespace FMODUnity
             }
             return false;
         }
+        
     }
 }
