@@ -8,7 +8,7 @@ public class BouncePad : MonoBehaviour
     public float jumpForce;
     //public MovementScript MovementScript;
 
-     Vector3 direction;
+    Vector3 direction;
 
     public AudioSource audiosource;
     public AudioClip Clip;
@@ -27,12 +27,12 @@ public class BouncePad : MonoBehaviour
 
     }
 
-        private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.tag == "Player")
         {
             Debug.Log("inside");
-            //PlaySound(Clip);
+            PlaySound(Clip);
             player.GetComponent<MovementScript>().Push(jumpForce);
             player.GetComponent<MovementScript>().glideSlider.value = 1;
         }

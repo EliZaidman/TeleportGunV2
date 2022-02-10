@@ -10,9 +10,20 @@ public class PauseMenu : MonoBehaviour
     public GunMove gunMove;
     public MovementScript movement;
     public GameObject mainMenu;
-    private bool insideMenu = false;
+    public bool insideMenu = false;
 
+    public GameObject character;
+    GameObject player;
+    public GameObject miniGame;
+    private CharacterController cc;
 
+    public GameObject playerCanvas;
+    private void Start()
+    {
+        player = GameObject.Find("Character");
+        cc = player.GetComponentInChildren<CharacterController>();
+
+    }
     void Update()
     {
         if (!insideMenu)
@@ -23,18 +34,18 @@ public class PauseMenu : MonoBehaviour
                 Menu.SetActive(true);
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
-                StartCoroutine(StopGame());
                 insideMenu = true;
+                StartCoroutine(StopGame());
             }
         }
-        
+
 
     }
-    
+
     IEnumerator StopGame()
     {
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
         gunManager.enabled = false;
         gunMove.enabled = false;
         movement.enabled = false;
@@ -51,8 +62,26 @@ public class PauseMenu : MonoBehaviour
         movement.enabled = true;
         //Time.timeScale = 1;
         Menu.SetActive(false);
-        insideMenu = true;
+        insideMenu = false;
 
+
+    }
+
+    public void MiniGame()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        gunManager.enabled = true;
+        gunMove.enabled = true;
+        movement.enabled = true;
+        Menu.SetActive(false);
+        insideMenu = false;
+
+        cc.enabled = false;
+        player.transform.position = miniGame.transform.position;
+        cc.enabled = true;
+        playerCanvas.SetActive(true);
+        gunManager.hasBullets = true;
 
     }
 }

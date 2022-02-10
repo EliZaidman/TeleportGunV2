@@ -149,7 +149,7 @@ public class GunManager : MonoBehaviour
                     {
                         cc.enabled = true;
                         Destroy(currnetBall);
-                        playerMovment.gravity = 20f;
+                        StartCoroutine(FixGravity());
                         isStuck = false;
                     }
 
@@ -247,10 +247,10 @@ public class GunManager : MonoBehaviour
     {
         cc.enabled = false;
 
-        player.transform.position = 1.000005f * Vector3.Lerp(player.transform.position, currnetBallPos, Time.deltaTime);
-
+        player.transform.position = /*1.000005f **/ Vector3.Lerp(player.transform.position, currnetBallPos, Time.deltaTime);
+        playerMovment.gravity = 1f;
         //cc.enabled = true;
-         //cc.enabled = true;
+        //cc.enabled = true;
     }
 
     private void BulletTypeSelector()
@@ -335,5 +335,12 @@ public class GunManager : MonoBehaviour
         Debug.Log("After");
         shootAnim.Stop("Reload");
     }
+    IEnumerator FixGravity()
+    {
+        playerMovment.moveDirection.y = playerMovment.jumpSpeed / 100;
 
+        yield return new WaitForSeconds(0.2f);
+        playerMovment.gravity = 20;
+        yield return new WaitForSeconds(0.2f);
+    }
 }

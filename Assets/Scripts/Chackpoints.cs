@@ -7,7 +7,8 @@ public class Chackpoints : MonoBehaviour
     public GameObject chackpoint;
     private GameObject player;
     private CharacterController cc;
-    
+
+
 
     private void Start()
     {
@@ -17,7 +18,6 @@ public class Chackpoints : MonoBehaviour
     }
     private void Update()
     {
-
 
 
     }
@@ -31,6 +31,11 @@ public class Chackpoints : MonoBehaviour
             
             cc.enabled = true;
         }
+        if (other.CompareTag("Red") || other.CompareTag("Green") || other.CompareTag("Blue"))
+        {
+            Destroy(other.gameObject);
+        }
     }
+
 
 }

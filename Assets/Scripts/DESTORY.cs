@@ -9,7 +9,7 @@ public class DESTORY : MonoBehaviour
     private void Start()
     {
         first = gameObject.GetComponents<Collider>()[0];
-        second = gameObject.GetComponents<Collider>()[2];
+        second = gameObject.GetComponents<Collider>()[1];
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -10,7 +10,22 @@ public class Bullet : MonoBehaviour
     public AudioClip Clip;
     Rigidbody getRigidBody;
 
+    private void OnEnable()
+    {
+        if (gameObject.tag == "Red")
+        {
+            StartCoroutine(DestoryTime(4));
+        }
 
+        if (gameObject.tag == "Green")
+        {
+            StartCoroutine(CheckBullet());
+        }
+        if (gameObject.tag == "Blue")
+        {
+            StartCoroutine(DestoryTime(1));
+        }
+    }
 
     private void Start()
     {
@@ -19,10 +34,6 @@ public class Bullet : MonoBehaviour
         
     }
 
-    private void OnEnable()
-    {
-        //StartCoroutine(DestoryRig());   
-    }
         
     IEnumerator DestoryRig()
     {
@@ -67,6 +78,8 @@ public class Bullet : MonoBehaviour
         //    PlayBullet(Clip);
         //}
 
+
+
         if (collision.gameObject.tag == "Wall")
         {
             if (gameObject.layer == 10)
@@ -76,7 +89,7 @@ public class Bullet : MonoBehaviour
 
                 this.transform.parent = collision.transform;
 
-                this.transform.localScale = new Vector3(10, 10, 10);
+                this.GetComponentInChildren<Transform>().localScale = new Vector3(10, 10, 10);
                 gunManager.isStuck = true;
             }
             else
@@ -91,6 +104,10 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (gameObject.tag == "Blue")
+        {
+            Destroy(gameObject);
+        }
 
     }
     public void PlayBullet(AudioClip clip)
@@ -103,12 +120,28 @@ public class Bullet : MonoBehaviour
 
     }
 
-    IEnumerator DestroyAfter(GameObject collistionObject)
+    IEnumerator DestoryTime(float time)
     {
-        Debug.Log("entered Coo");
-        yield return new WaitForSeconds(2);
-        Destroy(collistionObject);
-        Debug.Log("Exited co Coo");
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject);
+    }
 
+    IEnumerator WaitQueue(float time)
+    {
+        yield return new WaitForSeconds(time);
+       
+    }
+    
+    IEnumerator CheckBullet()
+    {
+        yield return new WaitForSeconds(2);
+        if (gunManager.isStuck == true)
+        {
+            yield break;
+        }
+        if (gunManager.isStuck == false)
+        {
+            StartCoroutine(DestoryTime(0.2f));
+        }
     }
 }

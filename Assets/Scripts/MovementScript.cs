@@ -20,7 +20,8 @@ public class MovementScript : MonoBehaviour
     public float lookXLimit;
     public Slider glideSlider;
     CharacterController characterController;
-    Vector3 moveDirection = Vector3.zero;
+    [HideInInspector]
+    public Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
     [HideInInspector]
     public float lookXLimitDefult;
@@ -58,6 +59,10 @@ public class MovementScript : MonoBehaviour
         lookXLimitDefult = lookXLimit;
     }
 
+    private void OnEnable()
+    {
+        AudioManager.Instance.PlayerSource = gameObject.GetComponent<AudioSource>();
+    }
     void Update()
     {
         // We are grounded, so recalculate move direction based on axes
